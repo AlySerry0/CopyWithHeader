@@ -1,0 +1,43 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+	<!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+	<id>serry.aly.CopyWithHeader</id>
+
+	<!-- Public plugin name should be written in Title Case.
+		 Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
+	<name>CopyWithHeader</name>
+
+	<!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+	<vendor url="https://github.com/AlySerry0">Aly Serry</vendor>
+
+	<!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+		 Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
+	<description>
+		CopyWithHeader is an IntelliJ IDEA plugin that allows users to copy the entire content of a file,
+		wrapped in a customizable XML or Markdown header. This is particularly useful for developers and
+		documentarians who need to share code snippets or file contents with additional context or metadata.
+	</description>
+
+	<!-- Product and plugin compatibility requirements.
+		 Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+	<depends>com.intellij.modules.platform</depends>
+
+	<!-- Extension points defined by the plugin.
+		 Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+	<extensions defaultExtensionNs="com.intellij">
+		<notificationGroup
+				id="Custom Copy Notifications"
+				displayType="BALLOON"
+				isLogByDefault="true"/>
+	</extensions>
+
+	<actions>
+		<action id="CopyWithFileHeader.CopyAction"
+		        class="serry.aly.copywithheader.CopyWithFileHeaderAction"
+		        text="Copy File with Header"
+		        description="Copies the entire file content wrapped in an XML/Markdown header.">
+			<add-to-group group-id="EditorPopupMenu" anchor="last"/>
+			<keyboard-shortcut keymap="$default" first-keystroke="control shift C"/>
+		</action>
+	</actions>
+</idea-plugin>
